@@ -1,4 +1,3 @@
-// dev-core-101-quiz-go.go
 package main
 
 import (
@@ -6,42 +5,50 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"unicode"
 )
 
 func main() {
-	// Создаём ввод с клавиатуры
 	reader := bufio.NewReader(os.Stdin)
 
-	// Приветствие и ввод имени пользователя
-	fmt.Print("Введите ваше имя: ")
-	name, _ := reader.ReadString('\n')
-	name = strings.TrimSpace(name)
+	// Ввод имени с проверкой 
+	var name string
+	for {
+		fmt.Print("Введите ваше имя: ")
+		input, _ := reader.ReadString('\n')
+		input = strings.TrimSpace(input)
+
+		if isValidName(input) {
+			name = input
+			break
+		} else {
+			fmt.Println("Имя должно состоять только из букв. Попробуйте снова.\n")
+		}
+	}
 
 	fmt.Printf("Привет, %s! Добро пожаловать в мини-викторину!\n", name)
 
-	// Список вопросов и правильных ответов
+	// Вопросы 
 	questions := []string{
 		"Столица Казахстана?",
 		"Сколько планет в Солнечной системе?",
 		"Сколько континентов на Земле?",
 	}
 
-	// Для каждого вопроса можно указать несколько допустимых вариантов ответа
 	answers := [][]string{
 		{"Астана"},
 		{"8", "восемь"},
-		{"7", "семь"}, // допускаем цифру и слово
+		{"7", "семь"},
 	}
 
-	score := 0 // счетчик правильных ответов
+	score := 0
 
-	// Основной цикл викторины
+	// Основной цикл
 	for i, question := range questions {
 		fmt.Printf("\nВопрос %d: %s\nВаш ответ: ", i+1, question)
 		userAnswer, _ := reader.ReadString('\n')
 		userAnswer = strings.TrimSpace(userAnswer)
 
-		// Проверка ответа: совпадает ли с одним из допустимых вариантов
 		correct := false
 		for _, ans := range answers[i] {
 			if strings.EqualFold(userAnswer, ans) {
@@ -58,6 +65,16 @@ func main() {
 		}
 	}
 
-	// Итоговый результат
+	// Итог 
 	fmt.Printf("\n%s, вы ответили правильно на %d из %d вопросов.\n", name, score, len(questions))
+}
+
+// Функция проверяет, что в имени ТОЛЬКО буквы и пробелы
+func isValidName(s string) bool {
+	for _, r := range s {
+		if !(unicode.IsLetter(r) || unicode.IsSpace(r)) {
+			return false
+		}
+	}
+	return len(strings.TrimSpace(s)) > 0
 }
