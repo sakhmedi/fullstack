@@ -1,0 +1,28 @@
+Practical Assignment: Environment Variables
+
+Displaying all environment variables:
+Command:
+printenv
+Explanation:
+Shows the full list of current environment variables.
+
+Checking the values of key variables:
+Commands:
+echo $PATH
+echo $HOME
+echo $USER
+echo $SHELL
+Explanation:
+echo prints the value of a specified environment variable.
+PATH — directories where programs are searched.
+HOME — the user's home directory.
+USER — the username of the logged-in user.
+SHELL — the default command-line shell.
+
+Creating a new environment variable:
+Command:
+export MY_VAR="HelloWorld"
+Verification:
+echo $MY_VAR
+Explanation:
+export creates a new environment variable available in the current session.
