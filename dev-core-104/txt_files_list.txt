@@ -1,0 +1,4 @@
+./log.txt
+./project_structure.txt
+./task7.txt
+./txt_files_list.txt

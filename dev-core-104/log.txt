@@ -1,0 +1,10 @@
+echo "line1" > ~/log.txt
+echo "line2" >> ~/log.txt
+echo "error: issue occurred" >> ~/log.txt
+echo "line4" >> ~/log.txt
+echo "line5 error detected" >> ~/log.txt
+echo "line6" >> ~/log.txt
+echo "error on line7" >> ~/log.txt
+echo "line8" >> ~/log.txt
+echo "line9" >> ~/log.txt
+echo "line10" >> ~/log.txt
