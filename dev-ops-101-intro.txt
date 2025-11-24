@@ -1,2 +1,0 @@
-DevOps helps developers and system administrators work together more efficiently by integrating development and operations processes. 
-It automates routine tasks such as testing, deployment, and monitoring, which speeds up releases and improves system stability.
